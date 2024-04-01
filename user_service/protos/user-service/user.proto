@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc Create(User) returns (User);
+  rpc GetUser(GetRequest) returns (User);
+  rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
+  rpc Update(User) returns (User);
+  rpc Delete(GetRequest) returns (tf);
+  rpc CheckUniquess(CheckUniqReq) returns (CheckUniqResp);
+  rpc Exists (Req) returns (User);
+}
+
+message GetPostId{
+  string post_id = 1;
+}
+
+message tf{
+  bool tf = 1;
+}
+
+message Req{
+  string email = 1;
+}
+
+message CheckUniqReq {
+  string field = 1;
+  string value = 2;
+}
+
+message CheckUniqResp{
+  int32 code = 1;
+}
+
+message GetRequest {
+  string user_id = 1;
+}
+
+message GetAllUsersRequest{
+  int64 page = 1;
+  int64 limit = 2;
+}
+
+message GetAllUsersResponse{
+  repeated User users = 1;
+}
+
+message User {
+  string first_name = 1;
+  string last_name = 2;
+  string username = 3;
+  string role = 4;
+  string password = 5;
+  string email = 6;
+  string id = 7;
+  string refreshToken = 8;
+  string created_at = 9;
+  string updated_at = 10;
+  repeated Post post = 11;
+}
+
+message Post{
+  string title = 1;
+  string content = 2;
+  string image_url = 3;
+  string id = 4;
+  string owner_id = 5;
+  int32 likes = 6;
+  int32 views = 7;
+  string category = 8;
+  repeated Comment comment = 9;
+}
+
+message Comment{
+  string id = 1;
+  string description = 2;
+}

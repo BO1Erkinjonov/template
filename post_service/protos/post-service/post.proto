@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package post;
+
+service PostService {
+  rpc Create(Post) returns (Post);
+  rpc GetPost(GetRequests) returns (PostResponse);
+  rpc GetAllPost(GetAllPostRequest) returns (GetAllPostResponse);
+  rpc UpdatePost(Post) returns (Post);
+  rpc DeletePost(GetRequests) returns (tf);
+  rpc GetPostByOwnerId(GetByOwnerIdRequest) returns (GetByOwnerIdResponse);
+  rpc DeletePostByOwnerId(GetByOwnerIdRequest) returns (tf);
+}
+
+message tf{
+  bool tf = 1;
+}
+
+message GetAllPostRequest{
+  int64 page = 1;
+  int64 limit = 2;
+}
+
+message GetAllPostResponse {
+  repeated Post posts = 1;
+}
+
+message GetByOwnerIdRequest{
+  string owner_id = 1;
+}
+
+message GetByOwnerIdResponse{
+  repeated Post posts = 1;
+}
+
+message Post {
+  string title = 1;
+  string content = 2;
+  string image_url = 3;
+  string id = 4;
+  string owner_id = 5;
+  int32 likes = 6;
+  int32 views = 7;
+  string category = 8;
+  string created_at = 9;
+  string updated_at = 10;
+  repeated Comment comment = 11;
+  Owner owner = 12;
+}
+
+message PostResponse {
+  string title = 1;
+  string content = 2;
+  string image_url = 3;
+  string id = 4;
+  int32 likes = 5;
+  int32 views = 6;
+  string category = 7;
+  string created_at = 8;
+  string updated_at = 9;
+  Owner owner = 10;
+  repeated Comment comment = 11;
+}
+
+message GetRequests{
+  string post_id = 1;
+}
+
+message Owner {
+  string id = 1;
+  string name = 2;
+  string last_name = 3;
+}
+
+message Comment{
+  string id = 1;
+  string description = 2;
+  string post_id = 3;
+  string owner_id = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+

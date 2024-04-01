@@ -1,0 +1,42 @@
+p, unauthorized, /v1/swagger/*, GET
+p, unauthorized, /v1/swagger/index.html, GET
+p, unauthorized, /v1/swagger/index.html, POST
+p, unauthorized, /v1/login, POST
+p, unauthorized, /v1/register, POST
+p, unauthorized, /v1/Verification, POST
+p, unauthorized, /v1/swagger/swagger-ui.css, GET
+p, unauthorized, /v1/swagger/swagger-ui-bundle.js, GET
+p, unauthorized, /v1/swagger/swagger-ui-standalone-preset.js, GET
+p, unauthorized, /v1/swagger/favicon-32x32.png, GET
+p, unauthorized, /v1/swagger/swagger/doc.json, GET
+
+p, user, /v1/get/user, GET
+p, user, /v1/users/all, GET
+p, user, /v1/users/delete, DELETE
+p, user, /v1/update/user, PUT
+p, user, /v1/create/post, POST
+p, user, /v1/posts/all, GET
+p, user, /v1/delete/post, DELETE
+p, user, /v1/update/post, PUT
+p, user, /v1/create/comment, POST
+p, user, /v1/get/comment, GET
+p, user, /v1/comments/all, GET
+p, user, /v1/update/comment, PUT
+p, user, /v1/delete/comment, DELETE
+p, user, /v1/users/all, GET
+p, user, /v1/get/post, GET
+p, user, /v1/like/post, PUT
+p, user, /v1/get/users, GET
+
+p, admin, /v1/admin/create/user, POST
+p, admin, /v1/admin/delete/user, DELETE
+p, admin, /v1/admin/update/post, PUT
+p, admin, /v1/admin/delete/comment, DELETE
+p, admin, /v1/admin/get/user, GET
+p, admin, /v1/admin/delete/post, DELETE
+
+p, superAdmin, /v1/superAdmin/delete/admin, DELETE
+
+g, user, unauthorized
+g, admin, user
+g, superAdmin, admin
